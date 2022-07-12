@@ -1,0 +1,185 @@
+<form [formGroup]="reservationform" (ngSubmit)="reservation()">
+
+
+
+    <div class="mb-3">
+
+
+      <label for="date" class="form-label">📅 Date</label>
+      <input id="date" name="date" type="date" class="form-control"  formControlName="date">
+      <p>{{reservationform.value.email}}</p>
+
+      <div class="alert alert-danger" *ngIf="reservationform.get('date').invalid && reservationform.get('date').touched">
+        <p *ngIf="reservationform.get('date')?.errors?.['required']"> Required places </p>
+        <!-- <p *ngIf="reservationform.get('date')?.errors?.['minlength']"> Minimum  1 characters write </p> -->
+      </div>
+
+    </div>
+
+
+    <div class="mb-3">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">
+          <p >⏰</p>
+        </span>
+        <select id="time" formControlName="time" name="time" class="form-select">
+          <option *ngFor="let item of times" [value]="item.id">{{item.time}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">
+          <p >🍽️</p>
+        </span>
+        <select id="table" formControlName="table" name="table" class="form-select">
+          <option *ngFor="let item of tables" [value]="item.id">{{item.table}}</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <fieldset id="smoking">
+      <label class="btn btn-secondary active">
+        <input id="smoking1" formControlName="smoking" name="smoking"  type="radio"  autocomplete="off" value="non-smoking"> non-smoking
+      </label>
+      <label class="btn btn-secondary">
+        <input id="smoking2" type="radio" formControlName="smoking"  name="smoking" autocomplete="off" value="smoking"> smoking
+      </label>
+    </fieldset>
+
+    </div>
+
+    <div class="mb-3">
+      <label for="name" class="form-label">🧑 Name</label>
+    <input id="name" name="name" type="text" class="form-control"  formControlName="name">
+    <p>{{reservationform.value.name}}</p>
+
+    <div class="alert alert-danger" *ngIf="reservationform.get('name').invalid && reservationform.get('name').touched">
+      <p *ngIf="reservationform.get('name')?.errors?.['required']"> Required places </p>
+      <p *ngIf="reservationform.get('name')?.errors?.['minlength']"> Minimum  1 characters write </p>
+    </div>
+
+  </div>
+
+  <div class="mb-3">
+
+    <label for="name" class="form-label">📧 Email</label>
+    <input id="email" name="name" type="email" class="form-control"  formControlName="email">
+    <p>{{reservationform.value.email}}</p>
+
+    <div class="alert alert-danger" *ngIf="reservationform.get('email').invalid && reservationform.get('email').touched">
+      <p *ngIf="reservationform.get('email')?.errors?.['required']"> Required places </p>
+      <p *ngIf="reservationform.get('email')?.errors?.['minlength']"> Minimum  1 characters write </p>
+    </div>
+
+  </div>
+
+
+  <div class="mb-3">
+
+    <label for="name" class="form-label">☎️ Phone</label>
+    <input id="phone" name="phone" type="text" class="form-control"  formControlName="phone">
+    <p>{{reservationform.value.phone}}</p>
+
+    <div class="alert alert-danger" *ngIf="reservationform.get('phone').invalid && reservationform.get('phone').touched">
+      <p *ngIf="reservationform.get('phone')?.errors?.['required']"> Required places </p>
+      <p *ngIf="reservationform.get('phone')?.errors?.['minlength']"> Minimum  1 characters write </p>
+    </div>
+
+  </div>
+
+  <div class="mb-3">
+
+    <label for="name" class="form-label">💬 Note</label>
+    <input id="note" name="note" type="text" class="form-control"  formControlName="note">
+    <p>{{reservationform.value.note}}</p>
+
+    <div class="alert alert-danger" *ngIf="reservationform.get('note').invalid && reservationform.get('note').touched">
+      <p *ngIf="reservationform.get('note')?.errors?.['required']"> Required places </p>
+      <p *ngIf="reservationform.get('note')?.errors?.['minlength']"> Minimum  1 characters write </p>
+    </div>
+
+  </div>
+
+  <button [disabled]="!isFormValid()" type="submit" class="btn btn-success">
+
+   Reserve a table
+
+ </button>
+
+
+</form>
+
+<br>
+<br>
+
+<div style=" text-align: left;" class="form-group">
+
+
+  <div style="display: inline-block; vertical-align: middle;" *ngFor="let item of reservs" name="posttext"
+    id="posttext">
+
+    <div class="card" style="width: 35rem;">
+
+
+
+      <div *ngFor="let item2 of times">
+
+
+        <h1 *ngIf="item2.id==item.timeId">
+        Time: {{item2.time}}
+
+      </h1>
+
+      </div>
+
+
+      <div *ngFor="let item3 of tables">
+
+
+        <h1 *ngIf="item3.id==item.tableId">
+        Table: {{item3.table}}
+
+      </h1>
+
+      </div>
+
+      <h1>
+        Somoking: {{item.smoking}}
+      </h1>
+
+      <h1>
+        Name: {{item.name}}
+      </h1>
+
+      <h1>
+        E-mail: {{item.email}}
+      </h1>
+
+      <h1>
+        Phone: {{item.phone}}
+      </h1>
+
+      <h1>
+        Note: {{item.note}}
+      </h1>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+</div>

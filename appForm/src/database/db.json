@@ -1,0 +1,41 @@
+{
+  "tables": [
+    {
+      "id": 1,
+      "table": "1 people"
+    },
+    {
+      "id": 2,
+      "table": "2 people"
+    },
+    {
+      "id": 3,
+      "table": "3 people"
+    },
+    {
+      "id": 4,
+      "table": "4 people"
+    }
+  ],
+  "times": [
+    {
+      "id": 1,
+      "time": "13:00"
+    },
+    {
+      "id": 2,
+      "time": "14:00"
+    },
+    {
+      "id": 3,
+      "time": "15:00"
+    },
+    {
+      "id": 4,
+      "time": "16:00"
+    }
+  ],
+  "reserves": [
+
+  ]
+}
